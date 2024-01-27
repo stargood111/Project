@@ -1,0 +1,319 @@
+@charset "UTF-8";
+
+/* index */
+
+/* 대시보드 공통 */
+/* 탭 */
+#wrap .main .tabContainer{
+    height: 100%;
+}
+#wrap .main .tabContainer .tabs{
+    margin-left: 5.8rem;
+}
+#wrap .main .tabContainer .tabs .tabBtn{
+    display: inline-block;
+    min-width: 160px;
+    margin-right: 2.4rem;
+    padding: 0.8rem 0;
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 400;
+    background-color: var(--color-tab2-bg);
+}
+#wrap .main .tabContainer .tabs .tabBtn::before{
+    content: '';
+    display: block;
+    width: 20px;
+    height: 100%;
+    position: absolute;
+    top: 0; left: -15px;
+    transform: skew(-10deg);
+    border-radius: 1rem 0 0;
+    background-color: var(--color-tab1-bg);
+}
+#wrap .main .tabContainer .tabs .tabBtn::after{
+    content: '';
+    display: block;
+    width: 20px;
+    height: 100%;
+    position: absolute;
+    top: 0; right: -15px;
+    transform: skew(10deg);
+    border-radius: 0 1rem 0 0;
+    background-color: var(--color-tab1-bg);
+}
+#wrap .main .tabContainer .tabs .tabBtn.active{
+    color: var(--color-tab-text);
+    font-weight: 700;
+    z-index: 1;
+    background-color: var(--color-tab1-bg);
+    
+}
+
+/* 추가한부분  */
+#wrap .main .tabContainer .tabs .tabBtn.active::before{
+    content: '';
+    display: block;
+    width: 20px;
+    height: 100%;
+    position: absolute;
+    top: 0; left: -15px;
+    transform: skew(-10deg);
+    border-radius: 1rem 0 0;
+    background-color: var(--color-tab1-bg);
+}
+
+#wrap .main .tabContainer .tabs .tabBtn.active::after{
+     content: '';
+    display: block;
+    width: 20px;
+    height: 100%;
+    position: absolute;
+    top: 0; right: -15px;
+    transform: skew(10deg);
+    border-radius: 0 1rem 0 0;
+    background-color: var(--color-tab1-bg);
+}
+
+/* 보드 */
+#wrap .main .tabContainer .tabBwrap{
+    /* 삭제 
+    height: calc(100% - 40px);
+    */
+    overflow-y: auto;
+}
+#wrap .main .tabContainer .tabBwrap .boardWrap{
+    display: -ms-grid;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+    border-radius: 1rem;
+    padding: 2rem;
+    /* 추가 */
+    margin : 0 0 2rem 0;
+}
+@media(max-width: 1300px){
+    #wrap .main .tabContainer .tabBwrap .boardWrap{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+#wrap .main .tabContainer .tabBwrap .boardWrap .board{
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1.2rem;
+    text-align: center;
+}
+#wrap .main .tabContainer .tabBwrap .boardWrap .board .imgBox{
+    width: 100%;
+    height: 240px;
+    border-radius: 1rem 1rem 0 0;
+    margin-bottom: 1.2rem;
+}
+#wrap .main .tabContainer .tabBwrap .boardWrap .board .imgBox::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 1rem 1rem 0 0;
+    transition: 0.5s;
+}
+#wrap .main .tabContainer .tabBwrap .boardWrap .board .imgBox img{
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem 1rem 0 0;
+    object-fit: cover;
+}
+#wrap .main .tabContainer .tabBwrap .tab02{
+    display: none;
+}
+
+#wrap .main .tabContainer .tabBwrap .boardWrap .board:hover .imgBox::after{
+    opacity: 0;
+}
+#wrap .main .tabContainer .tabBwrap .boardWrap .board:hover h4{
+    font-weight: 700;
+}
+#wrap .main .tabContainer .tabBwrap .boardWrap .board:hover{
+    box-shadow: rgba(0,0,0,0.1) 3px 3px 6px;
+    transform: translate(-3px, -3px);
+    transition: 0.5s;
+}
+
+/* .board 갯수에 따른 .boardWrap 사이즈 변경 */
+.boardWrap.twoColumns{
+    grid-template-columns: repeat(2, 1fr) !important;
+    width: fit-content;
+}
+.boardWrap.oneColumn{
+    grid-template-columns: repeat(1, 1fr) !important;
+    width: fit-content;
+}
+.boardWrap.twoColumns .board,
+.boardWrap.oneColumn .board
+{
+    width: 500px;
+}
+
+/* 성능 대시보드 전용 */
+#wrap .main .tabContainer .tabs .pfTabBtn,
+#wrap .main .tabContainer .tabs .pfTabBtn::before,
+#wrap .main .tabContainer .tabs .pfTabBtn::after
+{
+    background-color: var(--color-tab2-bg);
+}
+#wrap .main .tabContainer .tabBwrap .boardWrap.pfTab{
+    background-color: var(--color-tab1-bg);
+}
+
+/* 진단 대시보드 전용 */
+#wrap .main .tabContainer .tabs .dnTabBtn,
+#wrap .main .tabContainer .tabs .dnTabBtn::before,
+#wrap .main .tabContainer .tabs .dnTabBtn::after{
+    background-color: var(--color-tab2-bg);
+}
+#wrap .main .tabContainer .tabBwrap .boardWrap.dnTab{
+    background-color: var(--color-tab1-bg);
+}
+
+/*최인석*/
+#unisearch {
+    width: 1500px;
+    height: 0;
+    margin: 30px auto 70px auto; /* Adjust the auto value to center horizontally */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+#unibuttion {
+    font-size: 16px; /* 원하는 폰트 크기로 조절하세요 */
+    padding: 10px; /* 내용물과 버튼 테두리 간의 여백 조절 */
+
+}
+#unibuttion2 {
+    font-size: 16px; /* 원하는 폰트 크기로 조절하세요 */
+    padding: 10px; /* 내용물과 버튼 테두리 간의 여백 조절 */
+    background-color: #8BBDFF;
+}
+
+.valuebox {
+    background-color: #ffffff;
+    width: 120px;
+    font-size: 18px;
+    color: black;
+    text-align: center;
+    
+}
+.searchbox {
+    background-color: #ccc;
+    width: 120px;
+    font-size: 18px;
+    color: black;
+    text-align: center;
+    
+}
+.valuebox2 {
+    width: 240px;
+    margin: 10px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #ccc;
+}
+.submitbox {
+    background-color: #3498db;
+    width: 120px;
+    font-size: 18px;
+    border :none;
+    border-radius: 5px;
+    text-align: center;
+    padding: 8px;
+    margin-left: 430px;
+}
+.submitbox:active {
+    background-color: #2980b9; /* 클릭 시 배경 색상 변경 */
+}
+#submitvalue {
+    /* border: solid 1px #E1E1E1; */
+    width: 1200px;
+    height: 480px;
+    margin: 50px auto auto 200px;
+   }
+#submitvalue2 {
+/* border: solid 1px #E1E1E1; */
+width: 1100px;
+height: 60px;
+margin: 20px 0 0 200px;
+display: flex;
+align-items: center;
+border-top: solid 1px #ccc;
+border-radius: 5px;
+
+}
+#submitvalue3 {
+/* border: solid 1px #E1E1E1; */
+width: 1100px;
+height: 30px;
+margin: 0px 0 0 387px;
+display: flex;
+align-items: center;
+border-radius: 5px;
+}
+#submitvalue input[type="text"] {
+    width: 150px;
+    margin: 10px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#submitvalue2 input[type="text"] {
+    width: 150px;
+    margin: 10px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ccc;
+
+    
+}
+#submitvalue3 input[type="text"] {
+    width: 150px;
+    margin: 10px;
+    padding: 8px;
+    font-size: 16px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+}
+ #span1 {
+    font-size: 18px;
+    width: 100%;
+ }
+ #selectbox {
+    width: 150px;
+    height: 30px;
+    margin: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border-color:  #ccc;
+    text-align: center; 
+ }
+ .nextbox {
+    background-color: #3498db;
+    width: 120px;
+    font-size: 18px;
+    border :none;
+    border-radius: 5px;
+    text-align: center;
+    padding: 8px;
+    margin-left: 253px;
+}
+.nextbox:active {
+    background-color: #2980b9; /* 클릭 시 배경 색상 변경 */
+}
+ /*최인석*/

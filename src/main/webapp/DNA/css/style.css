@@ -1,0 +1,314 @@
+@charset "UTF-8";
+
+/* index */
+
+/* 대시보드 공통 */
+/* 탭 */
+#wrap .main .tabContainer{
+    height: 100%;
+}
+#wrap .main .tabContainer .tabs{
+    margin-left: 5.8rem;
+}
+#wrap .main .tabContainer .tabs .tabBtn{
+    display: inline-block;
+    min-width: 160px;
+    margin-right: 2.4rem;
+    padding: 0.8rem 0;
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 400;
+    background-color: var(--color-tab2-bg);
+}
+#wrap .main .tabContainer .tabs .tabBtn::before{
+    content: '';
+    display: block;
+    width: 20px;
+    height: 100%;
+    position: absolute;
+    top: 0; left: -15px;
+    transform: skew(-10deg);
+    border-radius: 1rem 0 0;
+    background-color: var(--color-tab1-bg);
+}
+#wrap .main .tabContainer .tabs .tabBtn::after{
+    content: '';
+    display: block;
+    width: 20px;
+    height: 100%;
+    position: absolute;
+    top: 0; right: -15px;
+    transform: skew(10deg);
+    border-radius: 0 1rem 0 0;
+    background-color: var(--color-tab1-bg);
+}
+#wrap .main .tabContainer .tabs .tabBtn.active{
+    color: var(--color-tab-text);
+    font-weight: 700;
+    z-index: 1;
+    background-color: var(--color-tab1-bg);
+    
+}
+
+/* 추가한부분  */
+#wrap .main .tabContainer .tabs .tabBtn.active::before{
+    content: '';
+    display: block;
+    width: 20px;
+    height: 100%;
+    position: absolute;
+    top: 0; left: -15px;
+    transform: skew(-10deg);
+    border-radius: 1rem 0 0;
+    background-color: var(--color-tab1-bg);
+}
+
+#wrap .main .tabContainer .tabs .tabBtn.active::after{
+     content: '';
+    display: block;
+    width: 20px;
+    height: 100%;
+    position: absolute;
+    top: 0; right: -15px;
+    transform: skew(10deg);
+    border-radius: 0 1rem 0 0;
+    background-color: var(--color-tab1-bg);
+}
+
+/* 보드 */
+#wrap .main .tabContainer .tabBwrap{
+    /* 삭제 
+    height: calc(100% - 40px);
+    */
+    overflow-y: auto;
+}
+#wrap .main .tabContainer .tabBwrap .boardWrap{
+    display: -ms-grid;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+    border-radius: 1rem;
+    padding: 2rem;
+    /* 추가 */
+    margin : 0 0 2rem 0;
+}
+@media(max-width: 1300px){
+    #wrap .main .tabContainer .tabBwrap .boardWrap{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+#wrap .main .tabContainer .tabBwrap .boardWrap .board{
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1.2rem;
+    text-align: center;
+}
+#wrap .main .tabContainer .tabBwrap .boardWrap .board .imgBox{
+    width: 100%;
+    height: 240px;
+    border-radius: 1rem 1rem 0 0;
+    margin-bottom: 1.2rem;
+}
+#wrap .main .tabContainer .tabBwrap .boardWrap .board .imgBox::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 1rem 1rem 0 0;
+    transition: 0.5s;
+}
+#wrap .main .tabContainer .tabBwrap .boardWrap .board .imgBox img{
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem 1rem 0 0;
+    object-fit: cover;
+}
+#wrap .main .tabContainer .tabBwrap .tab02{
+    display: none;
+}
+
+#wrap .main .tabContainer .tabBwrap .boardWrap .board:hover .imgBox::after{
+    opacity: 0;
+}
+#wrap .main .tabContainer .tabBwrap .boardWrap .board:hover h4{
+    font-weight: 700;
+}
+#wrap .main .tabContainer .tabBwrap .boardWrap .board:hover{
+    box-shadow: rgba(0,0,0,0.1) 3px 3px 6px;
+    transform: translate(-3px, -3px);
+    transition: 0.5s;
+}
+
+/* .board 갯수에 따른 .boardWrap 사이즈 변경 */
+.boardWrap.twoColumns{
+    grid-template-columns: repeat(2, 1fr) !important;
+    width: fit-content;
+}
+.boardWrap.oneColumn{
+    grid-template-columns: repeat(1, 1fr) !important;
+    width: fit-content;
+}
+.boardWrap.twoColumns .board,
+.boardWrap.oneColumn .board
+{
+    width: 500px;
+}
+
+/* 성능 대시보드 전용 */
+#wrap .main .tabContainer .tabs .pfTabBtn,
+#wrap .main .tabContainer .tabs .pfTabBtn::before,
+#wrap .main .tabContainer .tabs .pfTabBtn::after
+{
+    background-color: var(--color-tab2-bg);
+}
+#wrap .main .tabContainer .tabBwrap .boardWrap.pfTab{
+    background-color: var(--color-tab1-bg);
+}
+
+/* 진단 대시보드 전용 */
+#wrap .main .tabContainer .tabs .dnTabBtn,
+#wrap .main .tabContainer .tabs .dnTabBtn::before,
+#wrap .main .tabContainer .tabs .dnTabBtn::after{
+    background-color: var(--color-tab2-bg);
+}
+#wrap .main .tabContainer .tabBwrap .boardWrap.dnTab{
+    background-color: var(--color-tab1-bg);
+}
+
+
+/*최인석*/
+.intro-box { 
+    width: 70%; /* 소개글 박스의 폭 */
+    margin: 50px 0 0 200px; /* 가운데 정렬을 위한 마진 */
+    background-color: #D5D5D5; /* 박스 배경색 */
+    padding: 20px; /* 패딩 */
+    border-radius: 8px; /* 둥근 테두리 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  }
+.sub-box {
+    margin:200px 0 0 200px; /* 가운데 정렬을 위한 마진 */
+    padding: 20px; /* 패딩 */
+    border-radius: 8px; /* 둥근 테두리 */
+ 
+}
+  h1 {
+    color: #8C8C8C; /* 제목 텍스트 색상 */
+  }
+  
+
+  #platform {
+    color: #007bff; /* 파란색으로 변경 */
+  }
+  #platform_C{
+    color: yellow;
+  }
+  #platform_P{
+    color: green;
+  }
+  #platform_A{
+    color: white;
+  }
+ 
+  #mainPlatform {
+    background-color: #BDBDBD; /* 회색 백그라운드 색상 */
+    padding: 7px; /* 내용 주변에 여백 추가 */
+    margin-bottom: 5px; /* 각 리스트 아이템 사이의 간격 추가 */
+    list-style-type: none;
+  }
+  .form-group {
+    margin :20px 0 0 9%;
+}
+
+.form-group select {
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 5px;
+    border-color:  #ccc;
+    text-align: center; 
+}
+
+#submit {
+    width: 80px;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    border-color:  #ccc;
+
+}
+
+#submitvalue {
+    margin: 20px 0 0 180px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  
+}
+
+#valuebox {
+    background-color: #ccc;
+    width: 120px;
+    font-size: 18px;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    margin: 20px;
+
+}
+
+#submitvalue input[type="text"] {
+    width: 120px;
+    margin: 10px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+    
+}
+#codesearch{  
+    margin-left: 180px;
+}
+#conditionbox {   
+    background-color: #8BBDFF;
+    width: 360px;
+    font-size: 18px;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+#conditionbox-row { 
+    
+    margin-left: 180px;
+}
+ #conditionvalue{
+    width: 360px;
+    font-size: 18px;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #ccc;
+}
+#conditionvalue2{
+    width: 175px;
+    font-size: 18px;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 3px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #ccc;
+}
+ 
+/*최인석*/

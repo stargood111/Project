@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.dna1.dao.DnaDao">
+    <select id="getAcc" resultType="com.example.dna1.dto.DnaDto" parameterType="Map">
+        <choose>
+            <when test="type == 'city'">
+                <![CDATA[
+                    SELECT
+                        "AREACODE", 
+                        "STEP1"
+                    FROM
+                        dna."TB_WEATHER_AREA"
+                    WHERE 1=1
+                        AND "STEP2" = ''
+                        AND "STEP3" = ''
+                    ORDER BY
+                        "STEP1";
+                ]]>
+            </when>
+            <when test="type == 'county'">	
+                <![CDATA[
+                    SELECT
+                        "AREACODE", 
+                        "STEP2"
+                    FROM
+                        dna."TB_WEATHER_AREA"
+                    WHERE 1=1
+                        AND "STEP1" = #{keyword}
+                        AND "STEP2" != ''
+                        AND "STEP3" = ''
+                    ORDER BY
+                        "STEP2";
+                ]]>
+            </when>
+            <when test="type == 'town'">
+                <![CDATA[
+                    SELECT
+                        "AREACODE", "STEP3", "GRIDX", "GRIDY", "LATITUDEHOUR", "LONGITUDEHOUR"
+                    FROM
+                        dna."TB_WEATHER_AREA"
+                    WHERE 1=1
+                        AND "STEP2" = #{keyword}
+                        AND "STEP3" != ''
+                    ORDER BY
+                        "STEP3";
+                ]]>
+            </when>
+            <when test="type == 'last'">
+                <![CDATA[
+                    SELECT
+                        "AREACODE", "STEP3", "GRIDX", "GRIDY", "LATITUDEHOUR", "LATITUDEMIN", "LONGITUDEHOUR", "LONGITUDEMIN"
+                    FROM
+                        dna."TB_WEATHER_AREA"
+                    WHERE 1=1
+                    	AND "STEP2" != ''
+                        AND "STEP3" = #{keyword}
+                    ORDER BY
+                        "STEP3";
+                ]]>
+            </when>
+        </choose>
+    </select>
+</mapper>
