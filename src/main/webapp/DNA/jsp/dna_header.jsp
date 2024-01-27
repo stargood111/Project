@@ -24,7 +24,7 @@
                     <a href="/Accident">화학사고 관련 인자</a>
                 </li>
                 <li>
-                    <a href="javascript:void(0)">화학사고 예측</a>
+                    <a href="javascript:void(0)">게시판</a>
                     <ul class="subMenu">
                         <li><a href="">화학사고 예측모델</a></li>
                         <li><a href="">화학사고 위험성 평가모델</a></li>
